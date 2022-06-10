@@ -1,4 +1,4 @@
-﻿//Arduino Code 
+//Arduino Code 
 #define BaudRate 9600
 #define LEDPinGreen     10 // pin green LED number
 #define LEDPinRed       11 // pin red LED number
@@ -9,15 +9,15 @@ void setup()
   pinMode(LEDPinGreen, OUTPUT);
   Serial.begin(BaudRate);
 }
-void loop()
+void loop()                                 // infinite loop                              
 {
-    digitalWrite(LEDPinGreen, HIGH);        // RedLED ON
+    digitalWrite(LEDPinGreen, HIGH);        // GreenLED ON
 
      incomingOption = Serial.read();        //Chech situation
      switch(incomingOption){
         case '1':
           digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF
-          digitalWrite(LEDPinGreen, HIGH);  // GreenLED ON
+          digitalWrite(LEDPinRed, HIGH);    // RedLED ON
           break;
         case '0':
           digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF

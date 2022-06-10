@@ -1,0 +1,26 @@
+﻿//Arduino Code 
+#define BaudRate 9600
+#define LEDPinGreen     10 // pin green LED number
+#define LEDPinRed       11 // pin red LED number
+char incomingOption;
+
+void setup()
+{
+  pinMode(LEDPinGreen, OUTPUT);
+  Serial.begin(BaudRate);
+}
+void loop()
+{
+    digitalWrite(LEDPinGreen, HIGH);        // RedLED ON
+
+     incomingOption = Serial.read();        //Chech situation
+     switch(incomingOption){
+        case '1':
+          digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF
+          digitalWrite(LEDPinGreen, HIGH);  // GreenLED ON
+          break;
+        case '0':
+          digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF
+          break;
+     }
+}

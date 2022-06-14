@@ -2,15 +2,20 @@
 #define BaudRate 9600
 #define LEDPinGreen     10 // pin green LED number
 #define LEDPinRed       11 // pin red LED number
+
 char incomingOption;
 
 void setup()
 {
-  pinMode(LEDPinGreen, OUTPUT);
-  Serial.begin(BaudRate);
+    pinMode(LEDPinGreen, OUTPUT);
+    pinMode(LEDPinRed, OUTPUT);
+    Serial.begin(BaudRate);
 }
 void loop()                                 // infinite loop                              
 {
+    String stringOne = "Info from Arduino ";
+    Serial.println(stringOne);  // отправляем строку на порт
+
     digitalWrite(LEDPinGreen, HIGH);        // GreenLED ON
 
      incomingOption = Serial.read();        //Chech situation
@@ -23,4 +28,6 @@ void loop()                                 // infinite loop
           digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF
           break;
      }
+     //delay(1000); sleep
+
 }

@@ -11,7 +11,7 @@ namespace ArduinoLedController
     public partial class MainWindow : Window
     {
         static int speed = 9600; //between 300 and 2'000'000
-        static string pathHex = @"C:\Users\aderyagin\Documents\Arduino\sketch_jun14a\sketch_jun14a.ino.with_bootloader.standard.hex"; //path to the hex file
+        static string pathHex = @"sketch_jun14a.ino.with_bootloader.standard.hex"; //path to the hex file
         //private delegate void updateDelegate(string txt);
         private byte btnstate = 0;
 

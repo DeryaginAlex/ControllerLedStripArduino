@@ -3,7 +3,7 @@
 #define LEDPinGreen     10 // pin green LED number
 #define LEDPinRed       11 // pin red LED number
 
-char incomingOption;
+char incomingCommand;
 
 void setup()
 {
@@ -17,8 +17,8 @@ void loop()                                 // infinite loop
 
     digitalWrite(LEDPinGreen, HIGH);        // GreenLED ON
 
-     incomingOption = Serial.read();        //Chech situation
-     switch(incomingOption){
+     incomingCommand = Serial.read();        //Chech situation
+     switch(incomingCommand){
         case '1':
           digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF
           digitalWrite(LEDPinRed, HIGH);    // RedLED ON
@@ -27,6 +27,5 @@ void loop()                                 // infinite loop
           digitalWrite(LEDPinGreen, LOW);   // GreenLED OFF
           break;
      }
-     //delay(1000); sleep
-
+     //delay(1000); //sleep
 }

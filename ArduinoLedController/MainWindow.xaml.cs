@@ -12,20 +12,19 @@ namespace ArduinoLedController
     {
         ArduinoUsbPort arduinoUsbPort = new ArduinoUsbPort();
         private static int speed = 9600; //between 300 and 2'000'000
-        private static string pathHex = @"sketch_jun14a.ino.with_bootloader.standard.hex"; //path to the hex file
+        private static string pathHex = @"..\..\..\..\sketch.hex"; //path to the hex file
         private static byte btnState = 0;
         public MainWindow()
         {
             InitializeComponent();
             string usbPort = arduinoUsbPort.GetCorrectArduinoUsbPort();
-            // ArduinoUploader
+            // ArduinoUploader DLL
             var uploader = new ArduinoSketchUploader(new ArduinoSketchUploaderOptions()
             {
                 FileName = pathHex,
                 PortName = usbPort,
                 ArduinoModel = ArduinoModel.Leonardo //Model Arduino
-            }
-            );
+            });
             uploader.UploadSketch();    // loading hex to Arduino
         }
         private void btn1_Click(object sender, RoutedEventArgs e)

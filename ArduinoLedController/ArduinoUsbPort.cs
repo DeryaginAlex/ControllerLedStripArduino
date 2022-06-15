@@ -13,15 +13,9 @@ namespace ArduinoLedController
             foreach (string port in ports)
             {
                 currentPort = new SerialPort(port, 9600);
-                if (IsCorrectArduinoUsbPort())
-                {
-                    result = port;
-                }
+                if (IsCorrectArduinoUsbPort()) { result = port; }
             }
-            if (result == null)
-            {
-                throw new NullReferenceException("USB port which Arduino is connected was not found");
-            }
+            if (result == null) { throw new NullReferenceException("USB port which Arduino is connected was not found"); }
             return result;
         }
         public bool IsCorrectArduinoUsbPort()

@@ -13,8 +13,7 @@ void setup()
 }
 void loop()                                 // infinite loop                              
 {
-    String stringOne = "Info from Arduino ";
-    Serial.println(stringOne);  // отправляем строку на порт
+    Serial.println("Info from Arduino");    // forward string to usb port
 
     digitalWrite(LEDPinGreen, HIGH);        // GreenLED ON
 

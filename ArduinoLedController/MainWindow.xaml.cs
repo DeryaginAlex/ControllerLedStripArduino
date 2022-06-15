@@ -11,9 +11,9 @@ namespace ArduinoLedController
     public partial class MainWindow : Window
     {
         ArduinoUsbPort arduinoUsbPort = new ArduinoUsbPort();
-        static int speed = 9600; //between 300 and 2'000'000
-        static string pathHex = @"sketch_jun14a.ino.with_bootloader.standard.hex"; //path to the hex file
-        private byte btnState = 0;
+        private static int speed = 9600; //between 300 and 2'000'000
+        private static string pathHex = @"sketch_jun14a.ino.with_bootloader.standard.hex"; //path to the hex file
+        private static byte btnState = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -23,27 +23,27 @@ namespace ArduinoLedController
             {
                 FileName = pathHex,
                 PortName = usbPort,
-                ArduinoModel = ArduinoModel.Leonardo //Model
+                ArduinoModel = ArduinoModel.Leonardo //Model Arduino
             }
             );
-            uploader.UploadSketch();
+            uploader.UploadSketch();    // loading hex to Arduino
         }
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            string usbPort = arduinoUsbPort.GetCorrectArduinoUsbPort();
-            SerialPort serialPort = new SerialPort(usbPort, speed);
+            string usbPort = arduinoUsbPort.GetCorrectArduinoUsbPort(); 
+            SerialPort serialPort = new SerialPort(usbPort, speed); // connect to Arduino Usb Port
             if (btnState == 0)
             {
-                serialPort.Open();
-                serialPort.Write("1");
-                serialPort.Close();
-                btnState = 1;
+                serialPort.Open();      // connect to arduino
+                serialPort.Write("1");  // set command for arduino
+                serialPort.Close();     // disconnect from arduino
+                btnState = 1;           // change state
                 btn1.Content = "Red Led ON";
             }
             else
             {
                 serialPort.Open();
-                serialPort.Write("2");
+                serialPort.Write("0");
                 serialPort.Close();
                 btnState = 0;
                 btn1.Content = "Red Led OFF";

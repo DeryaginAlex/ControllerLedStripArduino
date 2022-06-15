@@ -12,7 +12,7 @@ namespace ArduinoLedController
     {
         ArduinoUsbPort arduinoUsbPort = new ArduinoUsbPort();
         private static int speed = 9600; //between 300 and 2'000'000
-        private static string pathHex = @"..\..\..\sketch.hex"; //path to the hex file
+        private static string pathHex = @"sketch.hex"; //path to the hex file
         private static byte btnState = 0;
         public MainWindow()
         {
@@ -29,7 +29,7 @@ namespace ArduinoLedController
         }
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            string usbPort = arduinoUsbPort.GetCorrectArduinoUsbPort(); 
+            string usbPort = arduinoUsbPort.GetCorrectArduinoUsbPort();
             SerialPort serialPort = new SerialPort(usbPort, speed); // connect to Arduino Usb Port
             if (btnState == 0)
             {
@@ -47,6 +47,13 @@ namespace ArduinoLedController
                 btnState = 0;
                 btn1.Content = "Red Led OFF";
             }
+        }
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            Arduino arduino = new Arduino();
+            string port = arduino.GetCorrectArduinoUsbPort();
+            arduino.UploadHexToArduino(port);
+            arduino.SendCommandForArduino(port);
         }
     }
 }

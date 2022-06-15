@@ -1,4 +1,5 @@
-﻿using System.IO.Ports;
+﻿using System;
+using System.IO.Ports;
 
 namespace ArduinoLedController
 {
@@ -7,15 +8,19 @@ namespace ArduinoLedController
         SerialPort currentPort;
         public string GetCorrectArduinoUsbPort()
         {
-            string result = null;
-            string[] ports = SerialPort.GetPortNames();
+            string result = null; // Correct Arduino Usb Port
+            string[] ports = SerialPort.GetPortNames(); // All ports
             foreach (string port in ports)
             {
-                this.currentPort = new SerialPort(port, 9600);
+                currentPort = new SerialPort(port, 9600);
                 if (IsCorrectArduinoUsbPort())
                 {
                     result = port;
                 }
+            }
+            if (result == null)
+            {
+                throw new NullReferenceException("USB port which Arduino is connected was not found");
             }
             return result;
         }
@@ -26,15 +31,7 @@ namespace ArduinoLedController
             string returnMessage = currentPort.ReadLine();
             currentPort.Close();
             // in arduino sketch should be Serial.println("Info from Arduino") inside  void loop()
-            if (returnMessage.Contains("Info from Arduino"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return returnMessage.Contains("Info from Arduino") ? true : false;
         }
     }
 }

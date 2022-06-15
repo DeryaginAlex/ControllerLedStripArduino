@@ -12,7 +12,7 @@ namespace ArduinoLedController
     {
         ArduinoUsbPort arduinoUsbPort = new ArduinoUsbPort();
         private static int speed = 9600; //between 300 and 2'000'000
-        private static string pathHex = @"..\..\..\..\sketch.hex"; //path to the hex file
+        private static string pathHex = @"..\..\..\sketch.hex"; //path to the hex file
         private static byte btnState = 0;
         public MainWindow()
         {

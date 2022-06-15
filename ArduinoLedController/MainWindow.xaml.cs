@@ -23,7 +23,7 @@ namespace ArduinoLedController
             {
                 FileName = pathHex,
                 PortName = usbPort,
-                ArduinoModel = ArduinoModel.Micro //Model
+                ArduinoModel = ArduinoModel.Leonardo //Model
             }
             );
             uploader.UploadSketch();

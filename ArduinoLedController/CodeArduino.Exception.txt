@@ -13,7 +13,7 @@ void setup()
 }
 void loop()                                 // infinite loop                              
 {
-  Serial.println("Info from Arduino");      // forward string to usb port
+  //Serial.println("Info from Arduino");      // forward string to usb port
   digitalWrite(LEDPinGreen, HIGH);          // GreenLED ON
   incomingCommand = Serial.read();          // Chech situation
   if(incomingCommand == 1){

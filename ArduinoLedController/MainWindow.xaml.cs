@@ -11,10 +11,10 @@ namespace ArduinoLedController
         {
             InitializeComponent();
         }
-            private void btn1_Click(object sender, RoutedEventArgs e)
+        private void btn1_Click(object sender, RoutedEventArgs e)
         {
+            string usbPort = tbSettingText.Text;
             Arduino arduino = new Arduino();
-            string usbPort = arduino.GetCorrectArduinoUsbPort();
             arduino.UploadHexToArduino(usbPort);
             arduino.SendCommandForArduino(usbPort);
         }

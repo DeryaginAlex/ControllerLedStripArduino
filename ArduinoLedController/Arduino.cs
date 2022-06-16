@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
+using System.Windows;
 using ArduinoUploader;
 using ArduinoUploader.Hardware;
 
@@ -42,7 +43,11 @@ namespace ArduinoLedController
                 currentPort.Close();
                 if (returnMessage == "Info from Arduino") { result = port; }
             }
-            if (result == null) { throw new NullReferenceException("USB port which Arduino is connected was not found"); }
+            if (result == null)
+            {
+                MessageBox.Show("USB port which Arduino is connected was not found");
+                throw new NullReferenceException("USB port which Arduino is connected was not found");
+            }
             return result;
         }
     }

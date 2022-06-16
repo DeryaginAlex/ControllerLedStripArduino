@@ -21,7 +21,7 @@ namespace ArduinoLedController
             }
             catch (Exception)
             {
-                MessageBox.Show(port + " does not exist");
+                MessageBox.Show(String.Format("{0} does not exist", port));
             }
 
         }
@@ -42,7 +42,8 @@ namespace ArduinoLedController
             }
             catch
             {
-                MessageBox.Show("USB port which Arduino is connected was not found.\n" + port + " is not correct port.");
+                //String.Format("The current price is {0} per ounce.",pricePerOunce);
+                MessageBox.Show(String.Format("USB port which Arduino is connected was not found.\n{0} is not correct port.", port));
             }
         }
         public string GetCorrectArduinoUsbPort()

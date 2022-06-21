@@ -1,0 +1,29 @@
+﻿#include <FastLED.h>
+
+#define LED_PIN     7 // HOFF said 7
+#define NUM_LEDS    20 // can be different
+
+char incomingCommand; // variable for pc commands
+CRGB leds[NUM_LEDS];
+
+void setup() {
+   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
+}
+
+void loop() {
+  IncludeSetColor(0,255,0);               // turn on the green color
+  incomingCommand = Serial.read();        // Chech situation
+  if(incomingCommand == 1){
+    IncludeSetColor(255,0,0);             // turn on the red color
+    delay(5000);                          // Sleep 5 sec
+    //incomingCommand = 0;
+  }
+}
+
+void IncludeSetColor(int r,int g,int b){
+  for (int i = 0; i <= NUM_LEDS; i++){
+    leds[i] = CRGB ( r, g, b);
+    FastLED.show();
+  }
+}
+

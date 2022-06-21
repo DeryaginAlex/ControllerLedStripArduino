@@ -1,4 +1,4 @@
-﻿//sketch2.hex
+﻿//sketch.hex
 #define BaudRate 9600
 #define LEDPinGreen     10 // pin green LED number
 #define LEDPinRed       11 // pin red LED number

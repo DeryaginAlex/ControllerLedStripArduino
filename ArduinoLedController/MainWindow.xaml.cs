@@ -32,7 +32,7 @@ namespace ArduinoLedController
 
         private void btnPrintSketch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(String.Format("Path to the hex file: {0}", globalVariable.pathHex));
+            MessageBox.Show(String.Format("Path to the hex file: {0}", GetGlobalVariable.pathHex));
         }
 
         private void btnSetSketch_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace ArduinoLedController
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                globalVariable.pathHex = openFileDialog.FileName;
+                GetGlobalVariable.pathHex = openFileDialog.FileName;
             }
         }
 

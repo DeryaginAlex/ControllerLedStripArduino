@@ -12,7 +12,7 @@ namespace ArduinoLedController
         {            
             try
             {
-                SerialPort serialPort = new SerialPort(port, globalVariable.speed);
+                SerialPort serialPort = new SerialPort(port, GetGlobalVariable.speed);
                 serialPort.Open();      // connect to arduino
                 serialPort.Write("1");  // set command for arduino
                 serialPort.Close();     // disconnect from arduino
@@ -30,7 +30,7 @@ namespace ArduinoLedController
                 // ArduinoUploader DLL
                 var uploader = new ArduinoSketchUploader(new ArduinoSketchUploaderOptions()
                 {
-                    FileName = globalVariable.pathHex,
+                    FileName = GetGlobalVariable.pathHex,
                     PortName = port,
                     ArduinoModel = ArduinoModel.Leonardo //Model Arduino
                 });

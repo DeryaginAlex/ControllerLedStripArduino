@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArduinoLedController"
         mc:Ignorable="d"
-        Title="ArduinoLedController" Height="300" Width="400">
+        Title="ArduinoLedController" Height="375" Width="400">
     <Grid Margin="0,0,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="97*"/>
             <ColumnDefinition Width="208*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btn1" Content="Exception Generation " HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="130" Click="btn1_Click" Margin="97,204,0,0" Grid.Column="1"/>
-        <TextBox x:Name="tbSettingText" HorizontalAlignment="Left" Margin="44,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="310" Visibility="Visible" Grid.ColumnSpan="2" Height="17"/>
+        <TextBox x:Name="tbSettingText" HorizontalAlignment="Left" Margin="45,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Visibility="Visible" Grid.ColumnSpan="2" Height="17" Text="COM9"/>
         <TextBlock HorizontalAlignment="Left" Margin="44,85,0,0" TextWrapping="Wrap" Text="Введите виртуальный COM порт:" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnSetPin" Content="Выбрать скетч" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" Click="btnSetPin_Click" Height="30" Width="130" Grid.ColumnSpan="2"/>
-
+        <Button x:Name="btnExceptionGeneration" Content="Сгенирировать ошибку " HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150" Click="btnExceptionGeneration_Click" Margin="77,242,0,0" Grid.Column="1"/>
+        <Button x:Name="btnSetSketch" Content="Загрузить скетч" HorizontalAlignment="Left" Margin="45,207,0,0" VerticalAlignment="Top" Click="btnSetSketch_Click" Height="30" Width="150" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnPrintSketch" Content="Показать активный скетч" HorizontalAlignment="Left" Margin="45,242,0,0" VerticalAlignment="Top" Click="btnPrintSketch_Click" Height="30" Width="150" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="checkBoxComPort" Content="запомнить вирт. COM порт" HorizontalAlignment="Left" Margin="46,131,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="308" Checked="checkBoxComPort_Checked" Unchecked="checkBoxComPort_Unchecked"/>
     </Grid>
 </Window>

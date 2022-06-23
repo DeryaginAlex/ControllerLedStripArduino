@@ -38,8 +38,7 @@ namespace ArduinoLedController
             }
             catch (Exception)
             {
-                //String.Format("The current price is {0} per ounce.",pricePerOunce);
-                MessageBox.Show(String.Format("USB port which Arduino is connected was not found.\n{0} is not correct port.", port));                
+                MessageBox.Show(String.Format("Usb port which Arduino is connected was not found.\n{0} is not correct port.", port));                
             }
         }
     }

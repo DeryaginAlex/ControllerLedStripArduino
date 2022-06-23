@@ -1,5 +1,6 @@
 ﻿using ArduinoLedController.Properties;
 using Microsoft.Win32;
+using System;
 using System.Windows;
 
 namespace ArduinoLedController
@@ -13,25 +14,44 @@ namespace ArduinoLedController
         {
             InitializeComponent();
         }
-        private void btn1_Click(object sender, RoutedEventArgs e)
-        {
-          
-            
 
-            string usbPort = tbSettingText.Text;
-            Arduino arduino = new Arduino();
-            arduino.UploadHexToArduino(usbPort);
-            arduino.SendCommandForArduino(usbPort);
+        private void btnExceptionGeneration_Click(object sender, RoutedEventArgs e)
+        {
+            string port = tbSettingText.Text;
+            if (string.IsNullOrEmpty(port))
+            {
+                MessageBox.Show("Port not entered");
+            }
+            else
+            {
+                Arduino arduino = new Arduino();
+                arduino.UploadHexToArduino(port);
+                arduino.SendCommandForArduino(port);
+            }
         }
 
-        private void btnSetPin_Click(object sender, RoutedEventArgs e)
+        private void btnPrintSketch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("pathHex: " + globalVariable.pathHex);
+            MessageBox.Show(String.Format("Path to the hex file: {0}", globalVariable.pathHex));
+        }
+
+        private void btnSetSketch_Click(object sender, RoutedEventArgs e)
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true) {
+            if (openFileDialog.ShowDialog() == true)
+            {
                 globalVariable.pathHex = openFileDialog.FileName;
             }
-            MessageBox.Show("pathHex: " + globalVariable.pathHex);
+        }
+
+        private void checkBoxComPort_Checked(object sender, RoutedEventArgs e)
+        {
+            tbSettingText.IsReadOnly = true;
+        }
+
+        private void checkBoxComPort_Unchecked(object sender, RoutedEventArgs e)
+        {
+            tbSettingText.IsReadOnly = false;
         }
     }
 }

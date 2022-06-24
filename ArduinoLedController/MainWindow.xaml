@@ -10,12 +10,13 @@
 
         <Grid ShowGridLines="True" Margin="0,0,0,0">
             <Grid.RowDefinitions>
+                <RowDefinition  Height="0.3*"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*" ></ColumnDefinition>
@@ -25,8 +26,9 @@
             <TextBlock  Text="Введите виртуальный COM порт:"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Width="220" TextAlignment="Center" />
             <TextBox x:Name="tbSettingText" Text="COM9"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Width="220" TextAlignment="Center" />
             <CheckBox x:Name="checkBoxComPort" Content="запомнить виртуальный COM порт" Checked="checkBoxComPort_Checked" Unchecked="checkBoxComPort_Unchecked"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Width="220"  />
-             <Button x:Name="btnPrintSketch" Content="Показать активный скетч " Click="btnPrintSketch_Click" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Height="30" Width="150"  />
-            <Button x:Name="btnSetSketch" Content="Загрузить скетч " Click="btnSetSketch_Click" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  Height="30" Width="150"/>
+            <Button x:Name="btnPrintSketch" Content="Показать активный скетч " Click="btnPrintSketch_Click" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="30" Width="150"  />
+            <Button x:Name="btnSetSketch" Content="Загрузить скетч " Click="btnSetSketch_Click" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  Height="30" Width="150"/>
+            <Button x:Name="btnInstallingDriver" Content="Загрузить драйверы " Click="btnInstallingDriver_Click" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  Height="30" Width="150"/>
             <Button x:Name="btnExceptionGeneration" Content="Сгенирировать ошибку " Click="btnExceptionGeneration_Click" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" Height="30" Width="150"/>
         </Grid>
     </Grid>

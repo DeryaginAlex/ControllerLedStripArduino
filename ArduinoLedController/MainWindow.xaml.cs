@@ -1,5 +1,4 @@
-﻿using ArduinoLedController.Properties;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Windows;
 
@@ -9,13 +8,13 @@ namespace ArduinoLedController
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {   
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void btnExceptionGeneration_Click(object sender, RoutedEventArgs e)
+            private void btnExceptionGeneration_Click(object sender, RoutedEventArgs e)
         {
             string port = tbSettingText.Text;
             if (string.IsNullOrEmpty(port))
@@ -52,6 +51,12 @@ namespace ArduinoLedController
         private void checkBoxComPort_Unchecked(object sender, RoutedEventArgs e)
         {
             tbSettingText.IsReadOnly = false;
+        }
+
+        private void btnInstallingDriver_Click(object sender, RoutedEventArgs e)
+        {
+            Arduino arduino = new Arduino();
+            arduino.InstallingDriver();
         }
     }
 }

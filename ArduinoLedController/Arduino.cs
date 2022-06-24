@@ -3,13 +3,14 @@ using System.IO.Ports;
 using System.Windows;
 using ArduinoUploader;
 using ArduinoUploader.Hardware;
+using Microsoft.Win32;
 
 namespace ArduinoLedController
 {
     internal class Arduino
     {
-        public void SendCommandForArduino(string port)
-        {            
+        internal void SendCommandForArduino(string port)
+        {
             try
             {
                 SerialPort serialPort = new SerialPort(port, GetGlobalVariable.speed);
@@ -23,8 +24,8 @@ namespace ArduinoLedController
             }
         }
 
-        public void UploadHexToArduino(string port)
-        {     
+        internal void UploadHexToArduino(string port)
+        {
             try
             {
                 // ArduinoUploader DLL
@@ -38,7 +39,29 @@ namespace ArduinoLedController
             }
             catch (Exception)
             {
-                MessageBox.Show(String.Format("Usb port which Arduino is connected was not found.\n{0} is not correct port.", port));                
+                MessageBox.Show(String.Format("Usb port which Arduino is connected was not found.\n{0} is not correct port.", port));
+            }
+        }
+
+        internal void InstallingDriver()
+        {
+            try
+            {
+                // installing drivers
+                System.Diagnostics.Process.Start(GetGlobalVariable.pathArduinoDriver);
+            }
+            catch (Exception)
+            {
+                if (MessageBox.Show("Driver File for arduino was not found.\n" +
+                    "Do you want set path to driver file?", "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        GetGlobalVariable.pathArduinoDriver = openFileDialog.FileName;
+                        InstallingDriver();
+                    }
+                }
             }
         }
     }

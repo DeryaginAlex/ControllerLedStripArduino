@@ -26,4 +26,3 @@ void IncludeSetColor(int r,int g,int b){
     FastLED.show();
   }
 }
-

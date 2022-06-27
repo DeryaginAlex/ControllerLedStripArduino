@@ -16,6 +16,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
                 <RowDefinition Height="0.3*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -26,10 +27,11 @@
             <TextBlock  Text="Введите виртуальный COM порт:"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Width="220" TextAlignment="Center" />
             <TextBox x:Name="tbSettingText" Text="COM9"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Width="220" TextAlignment="Center" />
             <CheckBox x:Name="checkBoxComPort" Content="запомнить виртуальный COM порт" Checked="checkBoxComPort_Checked" Unchecked="checkBoxComPort_Unchecked"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Width="220"  />
-            <Button x:Name="btnPrintSketch" Content="Показать активный скетч " Click="btnPrintSketch_Click" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="30" Width="150"  />
-            <Button x:Name="btnSetSketch" Content="Загрузить скетч " Click="btnSetSketch_Click" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  Height="30" Width="150"/>
-            <Button x:Name="btnInstallingDriver" Content="Загрузить драйверы " Click="btnInstallingDriver_Click" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  Height="30" Width="150"/>
-            <Button x:Name="btnExceptionGeneration" Content="Сгенирировать ошибку " Click="btnExceptionGeneration_Click" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" Height="30" Width="150"/>
+            <Button x:Name="btnSetVirtualComPort" Content="Задать COM порт" Click="btnSetVirtualComPort_Click" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  Height="30" Width="180"/>
+            <Button x:Name="btnInstallingDriver" Content="Загрузить драйверы" Click="btnInstallingDriver_Click" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  Height="30" Width="180"/>
+            <Button x:Name="btnPrintSketch" Content="Показать активный скетч" Click="btnPrintSketch_Click" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" Height="30" Width="180"  />
+            <Button x:Name="btnSetSketch" Content="Загрузить скетч" Click = "btnSetSketch_Click" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center"  Height="30" Width="180"/>
+            <Button x:Name="btnExceptionGeneration" Content="Сгенирировать ошибку" Click="btnExceptionGeneration_Click" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" Height="30" Width="180"/>
         </Grid>
     </Grid>
 </Window>

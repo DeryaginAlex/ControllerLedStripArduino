@@ -8,10 +8,14 @@ namespace ArduinoLedController
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {   
+    {
+        Arduino arduino = new Arduino();
         public MainWindow()
         {
             InitializeComponent();
+
+            var ports = arduino.GetPorts();
+            arduino.CheckPort(ports);
         }
 
             private void btnExceptionGeneration_Click(object sender, RoutedEventArgs e)
@@ -23,7 +27,6 @@ namespace ArduinoLedController
             }
             else
             {
-                Arduino arduino = new Arduino();
                 arduino.UploadHexToArduino(port);
                 arduino.SendCommandForArduino(port);
             }
@@ -31,7 +34,7 @@ namespace ArduinoLedController
 
         private void btnPrintSketch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(String.Format("Path to the hex file: {0}", GetGlobalVariable.pathHex));
+            MessageBox.Show(String.Format("Path to the hex file: {0}", GetGlobalVariable.PathHex));
         }
 
         private void btnSetSketch_Click(object sender, RoutedEventArgs e)
@@ -39,7 +42,7 @@ namespace ArduinoLedController
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                GetGlobalVariable.pathHex = openFileDialog.FileName;
+                GetGlobalVariable.PathHex = openFileDialog.FileName;
             }
         }
 
@@ -55,8 +58,16 @@ namespace ArduinoLedController
 
         private void btnInstallingDriver_Click(object sender, RoutedEventArgs e)
         {
-            Arduino arduino = new Arduino();
-            arduino.InstallingDriver();
+            arduino.InstallDrivers();
+        }
+
+        private void btnSetVirtualComPort_Click(object sender, RoutedEventArgs e)
+        {
+            GetGlobalVariable.VirtualComPort = tbSettingText.Text;
+            if (string.IsNullOrEmpty(GetGlobalVariable.VirtualComPort))
+            {
+                MessageBox.Show("Port not entered");
+            }
         }
     }
 }

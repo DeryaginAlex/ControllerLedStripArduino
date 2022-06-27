@@ -1,4 +1,4 @@
-# ArduinoLedController
+# ControllerLedStripArduino
                        
 __Модули задач:__  
 

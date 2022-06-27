@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.IO.Ports;
 using System.Windows;
 using ArduinoUploader;
@@ -17,7 +18,7 @@ namespace ControllerLedStripArduino
                 // installing drivers
                 System.Diagnostics.Process.Start(GetGlobalVariable.PathArduinoDriver);
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 var result = MessageBox.Show("Driver File for arduino was not found.\n Do you want set path to driver file?", "Question", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
@@ -40,9 +41,11 @@ namespace ControllerLedStripArduino
                 ManagementObjectSearcher comPorts = new ManagementObjectSearcher(connectionScope, serialQuery);
                 return comPorts;
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
-                throw new Exception ("Incorrect list of ports was received from the device manager");
+                MessageBox.Show("Incorrect list of ports was received from the device manager");
+                return new ManagementObjectSearcher(); // TO DO Delete this return. it is created only for the convenience of testing
+                //throw new Exception ("Incorrect list of ports was received from the device manager");
             }
         }
         internal string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
@@ -68,7 +71,9 @@ namespace ControllerLedStripArduino
             }
             catch (Exception)
             {
-                throw new Exception("Port received from the device manager is incorrect");
+                MessageBox.Show("Port received from the device manager is incorrect");
+                return "COM9"; // TO DO Delete this return. it is created only for the convenience of testing
+                //throw new Exception("Port received from the device manager is incorrect");
             }
         }
         internal void InstallCorrectPort(string comPort)
@@ -80,7 +85,8 @@ namespace ControllerLedStripArduino
             }
             catch (Exception)
             {
-                throw new Exception("Failed to install Com-port");
+                MessageBox.Show("Failed to install Com-port");
+                //throw new Exception("Failed to install Com-port");
             }
         }
         internal void UploadHexToArduino(string port)
@@ -99,6 +105,7 @@ namespace ControllerLedStripArduino
             catch (Exception)
             {
                 MessageBox.Show(String.Format("Usb port which Arduino is connected was not found.\n{0} is not correct port.", port));
+                //throw new Exception("Usb port which Arduino is connected was not found.Not correct port.");
             }
         }
         internal void SendCommandForArduino(string port)
@@ -113,6 +120,7 @@ namespace ControllerLedStripArduino
             catch (Exception)
             {
                 MessageBox.Show(String.Format("{0} does not exist", port));
+                //throw new Exception("Port does not exist");
             }
         }
     }

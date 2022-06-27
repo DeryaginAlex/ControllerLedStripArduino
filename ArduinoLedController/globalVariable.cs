@@ -12,7 +12,7 @@ namespace ArduinoLedController
         {
             get
             {
-                if (speed < 300 & speed > 2000000 )
+                if (speed < 300 && speed > 2000000 )
                 {
                     throw new IndexOutOfRangeException("speed must be between 300 and 2'000'000");
                 }

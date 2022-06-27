@@ -33,35 +33,60 @@ namespace ArduinoLedController
         }
         internal ManagementObjectSearcher GetPorts()
         {
-            ManagementScope connectionScope = new ManagementScope();
-            SelectQuery serialQuery = new SelectQuery("SELECT * FROM Win32_SerialPort");
-            ManagementObjectSearcher comPorts = new ManagementObjectSearcher(connectionScope, serialQuery);
-            return comPorts;
+            try
+            {
+                ManagementScope connectionScope = new ManagementScope();
+                SelectQuery serialQuery = new SelectQuery("SELECT * FROM Win32_SerialPort");
+                ManagementObjectSearcher comPorts = new ManagementObjectSearcher(connectionScope, serialQuery);
+                return comPorts;
+            }
+            catch (Exception)
+            {
+                throw new Exception ("Incorrect list of ports was received from the device manager");
+            }
+
         }
-        internal string CheckAndGetValidPort(ManagementObjectSearcher comPorts)
+        internal string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
         {
-            string result = null;
-            foreach (var comPort in comPorts.Get())
+            try
             {
-                string description = comPort["Description"].ToString();
-                string deviceId = comPort["DeviceID"].ToString();
-                if (description.Contains("Arduino"))
+                string result = null;
+                foreach (var comPort in comPorts.Get())
                 {
-                    result = deviceId;
+                    string description = comPort["Description"].ToString();
+                    string deviceId = comPort["DeviceID"].ToString();
+                    if (description.Contains("Arduino"))
+                    {
+                        result = deviceId;
+                    }
                 }
+                if (result == null)
+                {
+                    MessageBox.Show("Port is null");
+                    throw new ArgumentNullException("Port not found");
+                }
+                return result;
             }
-            if (result == null)
+            catch (Exception)
             {
-                MessageBox.Show("Port not found");
+                throw new Exception("Port received from the device manager is incorrect");
             }
-            return result;
+            
         }
 
-        internal void InstallCorrectPort(string comPorts) {
-            GetGlobalVariable.VirtualComPort = comPorts;
-            MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", comPorts));
+        internal void InstallCorrectPort(string comPort)
+        {
+            try
+            {
+                GetGlobalVariable.VirtualComPort = comPort;
+                MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", comPort));
+            }
+            catch (Exception)
+            {
+                throw new Exception("Failed to install Com-port");
+            }
         }
-        
+
         internal void UploadHexToArduino(string port)
         {
             try

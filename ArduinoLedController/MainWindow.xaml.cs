@@ -15,7 +15,7 @@ namespace ArduinoLedController
             InitializeComponent();
 
             var ports = arduino.GetPorts();
-            var port = arduino.CheckAndGetValidPort(ports);
+            var port = arduino.CheckAndGetCorrectPort(ports);
             arduino.InstallCorrectPort(port);
         }
 

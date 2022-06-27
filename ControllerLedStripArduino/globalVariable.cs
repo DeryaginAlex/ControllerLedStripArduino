@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArduinoLedController
+namespace ControllerLedStripArduino 
 {
     internal static class GetGlobalVariable
     {

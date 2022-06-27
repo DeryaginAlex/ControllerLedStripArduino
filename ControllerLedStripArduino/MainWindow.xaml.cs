@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace ArduinoLedController
+namespace ControllerLedStripArduino 
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

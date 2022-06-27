@@ -6,7 +6,7 @@ using ArduinoUploader.Hardware;
 using Microsoft.Win32;
 using System.Management;
 
-namespace ArduinoLedController
+namespace ControllerLedStripArduino 
 {
     internal class Arduino
     {
@@ -44,7 +44,6 @@ namespace ArduinoLedController
             {
                 throw new Exception ("Incorrect list of ports was received from the device manager");
             }
-
         }
         internal string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
         {
@@ -71,9 +70,7 @@ namespace ArduinoLedController
             {
                 throw new Exception("Port received from the device manager is incorrect");
             }
-            
         }
-
         internal void InstallCorrectPort(string comPort)
         {
             try
@@ -86,7 +83,6 @@ namespace ArduinoLedController
                 throw new Exception("Failed to install Com-port");
             }
         }
-
         internal void UploadHexToArduino(string port)
         {
             try

@@ -15,7 +15,8 @@ namespace ArduinoLedController
             InitializeComponent();
 
             var ports = arduino.GetPorts();
-            arduino.CheckPort(ports);
+            var port = arduino.CheckAndGetValidPort(ports);
+            arduino.InstallCorrectPort(port);
         }
 
             private void btnExceptionGeneration_Click(object sender, RoutedEventArgs e)

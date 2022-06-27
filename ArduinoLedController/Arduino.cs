@@ -38,7 +38,7 @@ namespace ArduinoLedController
             ManagementObjectSearcher comPorts = new ManagementObjectSearcher(connectionScope, serialQuery);
             return comPorts;
         }
-        internal void CheckPort(ManagementObjectSearcher comPorts)
+        internal string CheckAndGetValidPort(ManagementObjectSearcher comPorts)
         {
             string result = null;
             foreach (var comPort in comPorts.Get())
@@ -54,13 +54,14 @@ namespace ArduinoLedController
             {
                 MessageBox.Show("Port not found");
             }
-            else
-            {
-                GetGlobalVariable.VirtualComPort = result;
-                MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", result));
-            }
+            return result;
         }
 
+        internal void InstallCorrectPort(string comPorts) {
+            GetGlobalVariable.VirtualComPort = comPorts;
+            MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", comPorts));
+        }
+        
         internal void UploadHexToArduino(string port)
         {
             try

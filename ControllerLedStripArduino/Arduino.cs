@@ -31,6 +31,11 @@ namespace ControllerLedStripArduino
                     }
                 }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Generic Exception Handler: {e}");
+            }
+
         }
         internal ManagementObjectSearcher GetPorts()
         {
@@ -46,6 +51,11 @@ namespace ControllerLedStripArduino
                 MessageBox.Show("Incorrect list of ports was received from the device manager");
                 return new ManagementObjectSearcher(); // TO DO Delete this return. it is created only for the convenience of testing
                 //throw new Exception ("Incorrect list of ports was received from the device manager");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Generic Exception Handler: {e}");
+                return new ManagementObjectSearcher();
             }
         }
         internal string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
@@ -69,11 +79,16 @@ namespace ControllerLedStripArduino
                 }
                 return result;
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Port received from the device manager is incorrect");
                 return "COM9"; // TO DO Delete this return. it is created only for the convenience of testing
                 //throw new Exception("Port received from the device manager is incorrect");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Generic Exception Handler: {e}");
+                return "COM9";                
             }
         }
         internal void InstallCorrectPort(string comPort)
@@ -83,10 +98,14 @@ namespace ControllerLedStripArduino
                 GetGlobalVariable.VirtualComPort = comPort;
                 MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", comPort));
             }
-            catch (Exception)
+            catch (ArgumentNullException)
             {
                 MessageBox.Show("Failed to install Com-port");
                 //throw new Exception("Failed to install Com-port");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Generic Exception Handler: {e}");
             }
         }
         internal void UploadHexToArduino(string port)
@@ -107,6 +126,10 @@ namespace ControllerLedStripArduino
                 MessageBox.Show(String.Format("Usb port which Arduino is connected was not found.\n{0} is not correct port.", port));
                 //throw new Exception("Usb port which Arduino is connected was not found.Not correct port.");
             }
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show($"Generic Exception Handler: {e}");
+            //}
         }
         internal void SendCommandForArduino(string port)
         {

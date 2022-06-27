@@ -26,7 +26,7 @@ namespace ControllerLedStripArduino
             {
                 if (string.IsNullOrEmpty(virtualComPort) && string.IsNullOrWhiteSpace(virtualComPort))
                 {
-                    throw new NullReferenceException("Port not entered");
+                    throw new ArgumentNullException("Port not entered");
                 }
                 else { return virtualComPort; }
             }

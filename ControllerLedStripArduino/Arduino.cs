@@ -9,9 +9,9 @@ using System.Management;
 
 namespace ControllerLedStripArduino
 {
-    internal class Arduino
+    public class Arduino
     {
-        internal void InstallDrivers()
+        public void InstallDrivers()
         {
             try
             {
@@ -37,7 +37,7 @@ namespace ControllerLedStripArduino
             }
 
         }
-        internal ManagementObjectSearcher GetPorts()
+        public ManagementObjectSearcher GetPorts()
         {
             try
             {
@@ -46,7 +46,7 @@ namespace ControllerLedStripArduino
                 ManagementObjectSearcher comPorts = new ManagementObjectSearcher(connectionScope, serialQuery);
                 return comPorts;
             }
-            catch (NullReferenceException)
+            catch (FileNotFoundException)
             {
                 MessageBox.Show("Incorrect list of ports was received from the device manager");
                 return new ManagementObjectSearcher(); // TO DO Delete this return. it is created only for the convenience of testing
@@ -58,7 +58,7 @@ namespace ControllerLedStripArduino
                 return new ManagementObjectSearcher();
             }
         }
-        internal string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
+        public string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ControllerLedStripArduino
                 return "COM9";
             }
         }
-        internal void InstallCorrectPort(string comPort)
+        public void InstallCorrectPort(string comPort)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace ControllerLedStripArduino
                 MessageBox.Show($"Generic Exception Handler: {e}");
             }
         }
-        internal void UploadHexToArduino(string port)
+        public void UploadHexToArduino(string port)
         {
             try
             {
@@ -132,7 +132,7 @@ namespace ControllerLedStripArduino
             //    MessageBox.Show($"Generic Exception Handler: {e}");
             //}
         }
-        internal void SendCommandForArduino(string port)
+        public void SendCommandForArduino(string port)
         {
             try
             {

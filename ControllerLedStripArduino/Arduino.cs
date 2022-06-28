@@ -82,7 +82,8 @@ namespace ControllerLedStripArduino
             catch (NullReferenceException)
             {
                 MessageBox.Show("Port received from the device manager is incorrect");
-                return "COM9"; // TO DO Delete this return. it is created only for the convenience of testing
+                return "COM9"; 
+                // TO DO Delete this return. it is created only for the convenience of testing
                 //throw new Exception("Port received from the device manager is incorrect");
             }
             catch (Exception e)
@@ -142,7 +143,7 @@ namespace ControllerLedStripArduino
             }
             catch (Exception)
             {
-                MessageBox.Show(String.Format("{0} does not exist", port));
+                MessageBox.Show(String.Format("Port does not exist"));
                 //throw new Exception("Port does not exist");
             }
         }

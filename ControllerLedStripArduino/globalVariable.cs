@@ -1,24 +1,24 @@
 ﻿using System;
 
-namespace ControllerLedStripArduino 
+namespace ControllerLedStripArduino
 {
     internal static class GetGlobalVariable
     {
-        private static int speed = 9600; //between 300 and 2'000'000
+        private static int speedArduinoDataTransfer = 9600; //between 300 and 2'000'000
         private static string pathHex = System.IO.Path.GetFullPath(@"sketchs/sketch.hex"); //path to hex file
         private static string pathArduinoDriver = System.IO.Path.GetFullPath(@"drivers/dpinst-amd64.exe"); //path to Arduino Driver
         private static string virtualComPort = "";
-        public static int Speed
+        public static int SpeedArduinoDataTransfer
         {
             get
             {
-                if (speed < 300 && speed > 2000000 )
+                if (speedArduinoDataTransfer < 300 && speedArduinoDataTransfer > 2000000)
                 {
-                    throw new IndexOutOfRangeException("speed must be between 300 and 2'000'000");
+                    throw new IndexOutOfRangeException("speedArduinoDataTransfer - must be between 300 and 2'000'000");
                 }
-                else { return speed; }
+                else { return speedArduinoDataTransfer; }
             }
-            set { speed = value; }
+            set { speedArduinoDataTransfer = value; }
         }
         public static string VirtualComPort
         {
@@ -26,7 +26,7 @@ namespace ControllerLedStripArduino
             {
                 if (string.IsNullOrEmpty(virtualComPort) && string.IsNullOrWhiteSpace(virtualComPort))
                 {
-                    throw new ArgumentNullException("Port not entered");
+                    throw new ArgumentNullException("virtualComPort not entered");
                 }
                 else { return virtualComPort; }
             }

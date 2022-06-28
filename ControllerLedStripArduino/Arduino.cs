@@ -7,7 +7,7 @@ using ArduinoUploader.Hardware;
 using Microsoft.Win32;
 using System.Management;
 
-namespace ControllerLedStripArduino 
+namespace ControllerLedStripArduino
 {
     internal class Arduino
     {
@@ -88,7 +88,7 @@ namespace ControllerLedStripArduino
             catch (Exception e)
             {
                 MessageBox.Show($"Generic Exception Handler: {e}");
-                return "COM9";                
+                return "COM9";
             }
         }
         internal void InstallCorrectPort(string comPort)
@@ -135,7 +135,7 @@ namespace ControllerLedStripArduino
         {
             try
             {
-                SerialPort serialPort = new SerialPort(port, GetGlobalVariable.Speed);
+                SerialPort serialPort = new SerialPort(port, GetGlobalVariable.SpeedArduinoDataTransfer);
                 serialPort.Open();      // connect to arduino
                 serialPort.Write("1");  // set command for arduino
                 serialPort.Close();     // disconnect from arduino

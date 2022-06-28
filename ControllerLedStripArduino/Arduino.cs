@@ -16,7 +16,7 @@ namespace ControllerLedStripArduino
             try
             {
                 // installing drivers
-                System.Diagnostics.Process.Start(GetGlobalVariable.PathArduinoDriver);
+                System.Diagnostics.Process.Start(GlobalVariable.PathArduinoDriver);
             }
             catch (FileNotFoundException)
             {
@@ -26,7 +26,7 @@ namespace ControllerLedStripArduino
                     OpenFileDialog openFileDialog = new OpenFileDialog();
                     if (openFileDialog.ShowDialog() == true)
                     {
-                        GetGlobalVariable.PathArduinoDriver = openFileDialog.FileName;
+                        GlobalVariable.PathArduinoDriver = openFileDialog.FileName;
                         InstallDrivers();
                     }
                 }
@@ -96,7 +96,7 @@ namespace ControllerLedStripArduino
         {
             try
             {
-                GetGlobalVariable.VirtualComPort = comPort;
+                GlobalVariable.VirtualComPort = comPort;
                 MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", comPort));
             }
             catch (ArgumentNullException)
@@ -116,7 +116,7 @@ namespace ControllerLedStripArduino
                 // ArduinoUploader DLL
                 var uploader = new ArduinoSketchUploader(new ArduinoSketchUploaderOptions()
                 {
-                    FileName = GetGlobalVariable.PathHex,
+                    FileName = GlobalVariable.PathHex,
                     PortName = port,
                     ArduinoModel = ArduinoModel.Leonardo //Model Arduino
                 });
@@ -136,7 +136,7 @@ namespace ControllerLedStripArduino
         {
             try
             {
-                SerialPort serialPort = new SerialPort(port, GetGlobalVariable.SpeedArduinoDataTransfer);
+                SerialPort serialPort = new SerialPort(port, GlobalVariable.SpeedArduinoDataTransfer);
                 serialPort.Open();      // connect to arduino
                 serialPort.Write("1");  // set command for arduino
                 serialPort.Close();     // disconnect from arduino

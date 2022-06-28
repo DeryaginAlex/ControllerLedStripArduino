@@ -20,8 +20,8 @@ namespace ControllerLedStripArduino
         }
         private void btnSetVirtualComPort_Click(object sender, RoutedEventArgs e)
         {
-            GetGlobalVariable.VirtualComPort = tbSettingText.Text;
-            if (string.IsNullOrEmpty(GetGlobalVariable.VirtualComPort))
+            GlobalVariable.VirtualComPort = tbSettingText.Text;
+            if (string.IsNullOrEmpty(GlobalVariable.VirtualComPort))
             {
                 MessageBox.Show("Port not entered");
             }
@@ -40,14 +40,14 @@ namespace ControllerLedStripArduino
         }
         private void btnPrintSketch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(String.Format("Path to the hex file: {0}", GetGlobalVariable.PathHex));
+            MessageBox.Show(String.Format("Path to the hex file: {0}", GlobalVariable.PathHex));
         }
         private void btnSetSketch_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                GetGlobalVariable.PathHex = openFileDialog.FileName;
+                GlobalVariable.PathHex = openFileDialog.FileName;
             }
         }
         private void btnExceptionGeneration_Click(object sender, RoutedEventArgs e)

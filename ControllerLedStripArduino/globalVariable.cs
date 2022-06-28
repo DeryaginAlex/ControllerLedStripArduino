@@ -4,10 +4,14 @@ namespace ControllerLedStripArduino
 {
     internal static class GetGlobalVariable
     {
+        #region private fields of class
         private static int speedArduinoDataTransfer = 9600; //between 300 and 2'000'000
         private static string pathHex = System.IO.Path.GetFullPath(@"sketchs/sketch.hex"); //path to hex file
         private static string pathArduinoDriver = System.IO.Path.GetFullPath(@"drivers/dpinst-amd64.exe"); //path to Arduino Driver
         private static string virtualComPort = "";
+        #endregion
+
+        #region public properties of class
         public static int SpeedArduinoDataTransfer
         {
             get
@@ -56,5 +60,6 @@ namespace ControllerLedStripArduino
             }
             set { pathHex = value; }
         }
+        #endregion
     }
 }

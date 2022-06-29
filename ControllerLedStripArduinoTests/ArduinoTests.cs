@@ -43,19 +43,4 @@ public class ArduinoTests
 
         Assert.IsTrue(result);
     }
-
-
-    [TestCase("COM6")]
-    public void Arduino_InstallCorrectPort_PortsNotFound_Test(string port)
-    {
-        string expectation;
-
-        GlobalVariable.VirtualComPort="COM8";
-        expectation = GlobalVariable.VirtualComPort;
-        // TODO Найти ошибку
-        testObjectArduino.InstallCorrectPort(port);
-        expectation = GlobalVariable.VirtualComPort;
-
-        Assert.Equals(expectation, port);
-    }
 }

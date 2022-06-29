@@ -16,7 +16,7 @@ namespace ControllerLedStripArduino
         {
             get
             {
-                if (speedArduinoDataTransfer < 300 && speedArduinoDataTransfer > 2000000)
+                if (speedArduinoDataTransfer < 300 || speedArduinoDataTransfer > 2000000)
                 {
                     throw new IndexOutOfRangeException("speedArduinoDataTransfer - must be between 300 and 2'000'000");
                 }

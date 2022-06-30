@@ -1,5 +1,4 @@
 using System.Management;
-using ControllerLedStripArduino;
 
 namespace ControllerLedStripArduino;
 public class ArduinoTests

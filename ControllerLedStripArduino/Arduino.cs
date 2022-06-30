@@ -61,12 +61,12 @@ namespace ControllerLedStripArduino
 
             }
         }
-        public string CheckAndGetCorrectPort(ManagementObjectSearcher comPorts)
+        public string CheckAndGetCorrectPort(ManagementObjectSearcher ports)
         {
             try
             {
                 string result = null;
-                foreach (var comPort in comPorts.Get())
+                foreach (var comPort in ports.Get())
                 {
                     string description = comPort["Description"].ToString();
                     string deviceId = comPort["DeviceID"].ToString();
@@ -94,12 +94,12 @@ namespace ControllerLedStripArduino
                 return "COM9";
             }
         }
-        public void InstallCorrectPort(string comPort)
+        public void InstallCorrectPort(string port)
         {
             try
             {
-                GlobalVariable.VirtualComPort = comPort;
-                MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", comPort));
+                GlobalVariable.VirtualComPort = port;
+                MessageBox.Show(String.Format("Arduino virtual COM-port ({0}) is found automatically", port));
             }
             catch (ArgumentNullException)
             {

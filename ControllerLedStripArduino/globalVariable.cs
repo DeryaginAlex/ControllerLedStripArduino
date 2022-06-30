@@ -5,6 +5,9 @@ namespace ControllerLedStripArduino
     public static class GlobalVariable
     {
         #region private fields of class
+
+        // When connecting the arduino to computer via USB
+        // Virtual COM port is being created (Not USB)
         private static int speedArduinoDataTransfer = 9600; //between 300 and 2'000'000
         private static string pathHex = System.IO.Path.GetFullPath(@"sketchs/sketch.hex"); //path to hex file
         private static string pathArduinoDriver = System.IO.Path.GetFullPath(@"drivers/dpinst-amd64.exe"); //path to Arduino Driver

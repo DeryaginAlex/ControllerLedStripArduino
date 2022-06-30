@@ -14,51 +14,71 @@ namespace ControllerLedStripArduino
         #region public properties of class
         public static int SpeedArduinoDataTransfer
         {
-            get
+            get { return speedArduinoDataTransfer; }
+            set
             {
-                if (speedArduinoDataTransfer < 300 || speedArduinoDataTransfer > 2000000)
+                if (value < 300 || value > 2000000)
                 {
                     throw new IndexOutOfRangeException("speedArduinoDataTransfer - must be between 300 and 2'000'000");
                 }
-                else { return speedArduinoDataTransfer; }
+                else
+                {
+                    speedArduinoDataTransfer = value;
+                }
+
             }
-            set { speedArduinoDataTransfer = value; }
         }
         public static string VirtualComPort
         {
-            get
+            get { return virtualComPort; }
+            set
             {
-                if (string.IsNullOrEmpty(virtualComPort) && string.IsNullOrWhiteSpace(virtualComPort))
+                if (string.IsNullOrEmpty(value) && string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException("virtualComPort not entered");
                 }
-                else { return virtualComPort; }
+                else
+                {
+                    virtualComPort = value;
+                }
+
             }
-            set { virtualComPort = value; }
         }
         public static string PathArduinoDriver
         {
             get
             {
-                if (string.IsNullOrEmpty(pathArduinoDriver) && string.IsNullOrWhiteSpace(pathArduinoDriver))
+                return pathArduinoDriver;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value) && string.IsNullOrWhiteSpace(value))
                 {
                     throw new NullReferenceException("Path Arduino Driver not entered");
                 }
-                else { return pathArduinoDriver; }
+                else
+                {
+                    pathArduinoDriver = value;
+                }
             }
-            set { pathArduinoDriver = value; }
         }
         public static string PathHex
         {
             get
             {
-                if (string.IsNullOrEmpty(pathHex) && string.IsNullOrWhiteSpace(pathHex))
+                return pathHex;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value) && string.IsNullOrWhiteSpace(value))
                 {
                     throw new NullReferenceException("Path HEX File not entered");
                 }
-                else { return pathHex; }
+                else
+                {
+                    pathHex = value;
+                }
             }
-            set { pathHex = value; }
         }
         #endregion
     }

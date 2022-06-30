@@ -11,8 +11,11 @@ public class ArduinoTests
     {
         testObjectArduino = new Arduino();
     }
+
+    //method InstallDrivers tested through property GlobalVariable.PathArduinoDriver
+
     [Test]
-    public void Arduino_GetPorts_PortNotFound_Test()
+    public void Arduino_GetPorts_ListOfPortsIsEmpty_Test()
     {
         bool result = false;
         try
@@ -26,10 +29,9 @@ public class ArduinoTests
         Assert.IsTrue(result);
     }
 
-    [Test]
-    public void Arduino_CheckAndGetCorrectPort_PortsNotFound_Test()
+    [TestCase(null)]
+    public void Arduino_CheckAndGetCorrectPort_PortsNotFound_Test(ManagementObjectSearcher ports)
     {
-        var ports = new ManagementObjectSearcher(new ManagementScope(), new SelectQuery());
         bool result = false;
 
         try
@@ -44,14 +46,14 @@ public class ArduinoTests
         Assert.IsTrue(result);
     }
     
-    [Test]
-    public void Arduino_InstallCorrectPort_PortsNotFound_Test()
+    [TestCase(null)]
+    public void Arduino_InstallCorrectPort_IncorrectInput_Test(string port)
     {
         bool result = false;
 
         try
         {
-            testObjectArduino.InstallCorrectPort(null);
+            testObjectArduino.InstallCorrectPort(port);
         }
         catch (Exception)
         {
@@ -61,13 +63,14 @@ public class ArduinoTests
         Assert.IsTrue(result);
     }
 
-    [Test]
-    public void Arduino_SendCommandForArduino_PortIsNull_Test() {
+    [TestCase(null)]
+    public void Arduino_UploadHexToArduino_IncorrectInput_Test(string port)
+    {
         bool result = false;
 
         try
         {
-            testObjectArduino.SendCommandForArduino(null);
+            testObjectArduino.UploadHexToArduino(port);
         }
         catch (FileNotFoundException)
         {
@@ -77,14 +80,13 @@ public class ArduinoTests
         Assert.IsTrue(result);
     }
 
-    [Test]
-    public void Arduino_UploadHexToArduino_IncorrectInput_Test()
-    {
+    [TestCase(null)]
+    public void Arduino_SendCommandForArduino_PortNotFound_Test(string port) {
         bool result = false;
 
         try
         {
-            testObjectArduino.UploadHexToArduino(null);
+            testObjectArduino.SendCommandForArduino(port);
         }
         catch (FileNotFoundException)
         {

@@ -13,12 +13,13 @@ namespace ControllerLedStripArduino
     {
         public void InstallDrivers()
         {
+            System.Diagnostics.Process.Start(GlobalVariable.PathArduinoDriver);
             try
             {
                 // installing drivers
                 System.Diagnostics.Process.Start(GlobalVariable.PathArduinoDriver);
             }
-            catch (FileNotFoundException)
+            catch (NullReferenceException)
             {
                 var result = MessageBox.Show("Driver File for arduino was not found.\n Do you want set path to driver file?", "Question", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
@@ -36,7 +37,6 @@ namespace ControllerLedStripArduino
                 MessageBox.Show($"Generic Exception Handler: {e}");
                 throw new Exception($"Generic Exception Handler: {e}");
             }
-
         }
         public ManagementObjectSearcher GetPorts()
         {

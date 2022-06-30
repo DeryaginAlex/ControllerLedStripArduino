@@ -41,7 +41,6 @@ namespace ControllerLedStripArduino
                 {
                     virtualComPort = value;
                 }
-
             }
         }
         public static string PathArduinoDriver

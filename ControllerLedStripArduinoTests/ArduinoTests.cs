@@ -43,4 +43,55 @@ public class ArduinoTests
 
         Assert.IsTrue(result);
     }
+    
+    [Test]
+    public void Arduino_InstallCorrectPort_PortsNotFound_Test()
+    {
+        bool result = false;
+
+        try
+        {
+            testObjectArduino.InstallCorrectPort(null);
+        }
+        catch (Exception)
+        {
+            result = true;
+        }
+
+        Assert.IsTrue(result);
+    }
+
+    [Test]
+    public void Arduino_SendCommandForArduino_PortIsNull_Test() {
+        bool result = false;
+
+        try
+        {
+            testObjectArduino.SendCommandForArduino(null);
+        }
+        catch (FileNotFoundException)
+        {
+            result = true;
+        }
+
+        Assert.IsTrue(result);
+    }
+
+    [Test]
+    public void Arduino_UploadHexToArduino_IncorrectInput_Test()
+    {
+        bool result = false;
+
+        try
+        {
+            testObjectArduino.UploadHexToArduino(null);
+        }
+        catch (FileNotFoundException)
+        {
+            result = true;
+        }
+
+        Assert.IsTrue(result);
+    }
+
 }
